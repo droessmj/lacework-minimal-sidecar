@@ -27,10 +27,8 @@ workflows:
   say-hello-workflow:
     jobs:
       - say-hello
-  scan_container_and_terminate_pipeline_on_fixable_vuln:
+  scan_container:
     jobs:
-      - lacework/ctr-vuln-scan:
-          fail_on_fixable: true
-          html: true
-          registry: index.docker.io
-          repository: lacework/lacework-cli
+      - lacework/inline-scanner-scan:
+          image_name: lacework/lacework-cli
+          image_tag: latest

@@ -29,6 +29,6 @@ workflows:
       - say-hello
   scan_container:
     jobs:
-      - lacework/inline-scanner-scan:
+      - lacework/inline-scanner-evaluate:
           image_name: "lacework/lacework-cli"
           image_tag: "latest"

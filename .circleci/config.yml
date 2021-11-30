@@ -12,6 +12,9 @@ jobs:
           name: "Say hello"
           command: "echo Hello, World!"
       - lacework/install-inline-scanner
+      - run:
+          name: "Configure lw-scanner auth"
+          command: "echo 'lwcs \n _930d0541a66b95d608f696d7816e6491' | lw-scanner configure auth"
       - lacework/inline-scanner-evaluate:
           image_name: "ubuntu"
           image_tag: "latest"

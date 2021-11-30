@@ -12,9 +12,7 @@ jobs:
           name: "Say hello"
           command: "echo Hello, World!"
       - lacework/install-inline-scanner
-      - run:
-          name: "Configure lw-scanner auth"
-          command: "echo 'lwcs \n _930d0541a66b95d608f696d7816e6491' | lw-scanner configure auth"
+      # scanner authentication managed as environment variables in associated context
       - setup_remote_docker:
           version: 19.03.13
       - lacework/inline-scanner-evaluate:
@@ -25,6 +23,8 @@ orbs:
   lacework: lacework/lacework@1.4.0
 
 workflows:
-  say-hello-workflow:
+  basic-lw-scanner-eval:
     jobs:
-      - say-hello-and-eval
+      - say-hello-and-eval:
+          context: lw-scanner-lw-md
+

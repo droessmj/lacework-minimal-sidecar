@@ -3,7 +3,7 @@
 version: 2.1
 
 jobs:
-  say-hello:
+  say-hello-and-eval:
     docker:
       - image: cimg/base:stable
     steps:
@@ -11,6 +11,9 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
+      - lacework/inline-scanner-evaluate:
+          image_name: "ubuntu"
+          image_tag: "latest"
 
 orbs:
   lacework: lacework/lacework@1.4.0
@@ -18,9 +21,4 @@ orbs:
 workflows:
   say-hello-workflow:
     jobs:
-      - say-hello
-  scan_container:
-    jobs:
-      - inline-scanner-evaluate:
-          image_name: "lacework/lacework-cli"
-          image_tag: "latest"
+      - say-hello-and-eval

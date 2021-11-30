@@ -24,11 +24,9 @@ orbs:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  say-hello-workflow:
-    jobs:
-      - say-hello
-  scan_container:
+  scan_my_container:
     jobs:
       - lacework/inline-scanner-scan:
           image_name: lacework/lacework-cli
           image_tag: latest
+
